@@ -1,0 +1,7 @@
+module TestApp
+{
+	interface HelloJava
+	{
+	    string hello(int no, string name);
+	};
+};
