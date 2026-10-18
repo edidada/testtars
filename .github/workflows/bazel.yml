@@ -1,0 +1,26 @@
+name: Bazel CI (macOS / JDK 17)
+
+on:
+  push:
+    branches: [ "bazel" ]
+  pull_request:
+    branches: [ "bazel" ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: Set up Bazel
+      uses: bazelbuild/setup-bazelisk@v3
+
+    - name: Build with Bazel
+      run: bazel build //:testtars
